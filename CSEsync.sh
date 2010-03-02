@@ -16,7 +16,7 @@ $0 [OPTIONS]
 
 Description:
 
-Uses rsync and ssh with default switches to synchronize CSE project folders.
+Uses git, rsync, and ssh with default switches to synchronize CSE project folders.
 
 Options:
 
@@ -56,6 +56,9 @@ done
 # Logic
 if [ $push -eq 1  ]; then
     rsync -"$dry_run"vrut -e "ssh -i $key" "$lpath" $ruser@$rhost:$rpath
+    cd "$lpath"
+    ls
+    git push CSE-231 master
 elif [ $pull -eq 1 ]; then
     rsync -"$dry_run"vrut -e "ssh -i $key" $ruser@$rhost:$rpath "$lpath"
 else
