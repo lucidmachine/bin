@@ -6,6 +6,8 @@ ruser=slenkeri
 rhost=adriatic.cse.msu.edu
 rpath=/user/slenkeri/Projects/
 lpath=/home/watchboy/School/Programming\ I/Projects/
+gitRepo=CSE-231
+gitSpec=master
 
 function help
 {
@@ -27,6 +29,20 @@ Options:
 "
 }
 
+function push
+{
+rsync -"$rSyncDryRun"vrut -e "ssh -i $key" "$lpath" $ruser@$rhost:$rpath
+cd "$lpath"
+ls
+git commit --interactive
+git push "$gitRepo" "$gitSpec"
+}
+
+function pull
+{
+rsync -"$rSyncDryRun"vrut -e "ssh -i $key" $ruser@$rhost:$rpath "$lpath"
+}
+
 # Prevent execution without parameters
 if [ $# -eq "0" ]; then
     help
@@ -34,33 +50,33 @@ if [ $# -eq "0" ]; then
 fi
 
 # Switches
-push=0
-pull=0
-dry_run=""
+pushBit=0
+pullBit=0
+rSyncDryRun=""
+gitDryRun=""
+
 
 while getopts "hnpP" Option; do
     case $Option in
         h )    help
-            exit
+               exit
         ;;
-        n )    dry_run=n
+        n )    rSyncDryRun=n
+               gitDryRun=--dry-run
         ;;
-        p )    push=1
+        p )    pushBit=1
         ;;
-        P )    pull=1
+        P )    pullBit=1
         ;;
     esac
     shift $((OPTIND - 1))
 done
 
 # Logic
-if [ $push -eq 1  ]; then
-    rsync -"$dry_run"vrut -e "ssh -i $key" "$lpath" $ruser@$rhost:$rpath
-    cd "$lpath"
-    ls
-    git push CSE-231 master
-elif [ $pull -eq 1 ]; then
-    rsync -"$dry_run"vrut -e "ssh -i $key" $ruser@$rhost:$rpath "$lpath"
+if [ $pushBit -eq 1  ]; then
+    push    
+elif [ $pullBit -eq 1 ]; then
+    pull
 else
     help
 fi
