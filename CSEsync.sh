@@ -9,6 +9,7 @@ lpath=/home/watchboy/School/Programming\ I/Projects/
 gitRepo=CSE-231
 gitSpec=master
 
+# Functions
 function help
 {
 echo "
@@ -34,7 +35,7 @@ function push
 rsync -"$rSyncDryRun"vrut -e "ssh -i $key" "$lpath" $ruser@$rhost:$rpath
 cd "$lpath"
 ls
-git commit --interactive
+git commit -a
 git push "$gitRepo" "$gitSpec"
 }
 
