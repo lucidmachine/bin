@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Requires vorbistools
+# Requires vorbis-tools
 
 # Synchronize all files b/w external and internal drives
 # Note: this will transfer all .flac files for songs that have already been converted to .ogg
