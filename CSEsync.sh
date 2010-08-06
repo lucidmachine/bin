@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Vars
-key=/home/watchboy/.ssh/id_dsa
+key=/home/watchboy/.ssh/id_rsa
 ruser=slenkeri
 rhost=adriatic.cse.msu.edu
 rpath=/user/slenkeri/Projects/
-lpath=/home/watchboy/School/Programming\ I/Projects/
+lpath=/home/watchboy/CSE-231/
 gitRepo=CSE-231
 gitSpec=master
 
