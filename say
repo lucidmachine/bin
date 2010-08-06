@@ -1,0 +1,7 @@
+#! /bin/bash
+
+startVol=`aumix -q | grep vol | sed 's/vol.[0-9]*\,\ //'`
+
+aumix -v 100
+echo "$@" | festival --tts
+aumix -v $startVol
