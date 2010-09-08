@@ -4,9 +4,9 @@
 key=/home/watchboy/.ssh/id_rsa
 ruser=slenkeri
 rhost=adriatic.cse.msu.edu
-rpath=/user/slenkeri/Projects/
-lpath=/home/watchboy/CSE-231/
-gitRepo=CSE-231
+rpath=/user/slenkeri/232/
+lpath="/home/watchboy/School/CSE 232/Projects"
+gitRepo="/home/watchboy/School/CSE 232/Projects"
 gitSpec=master
 
 # Functions
