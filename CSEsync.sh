@@ -32,10 +32,13 @@ Options:
 
 function push
 {
+echo "Running rsync"
 rsync -"$rSyncDryRun"vrut -e "ssh -i $key" "$lpath" $ruser@$rhost:$rpath
 cd "$lpath"
 ls
+echo "Committing to local git repository"
 git commit -a
+echo "Pushing to remote git repository"
 git push "$gitRepo" "$gitSpec"
 }
 
