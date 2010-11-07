@@ -1,7 +1,5 @@
 #! /bin/bash
 
-MINPARAMS=1
-
 delete=""
 dry_run=""
 quiet=""
@@ -51,6 +49,6 @@ done
 cd $1
 
 # Recursively updates, preserving timestamps and excluding video and bookmarks
-rsync -"$dry_run"rvut"$quiet" --exclude Gnooze/ --exclude Sessler\'s\ Soapbox/ --exclude X-Play\'s\ Daily\ Video\ Podcast/ --exclude Ask\ A\ Ninja/ --exclude *.bmark "$delete" "$1" "$2"
+rsync -"$dry_run"rvut"$quiet" --exclude *.bmark "$delete" "$1" "$2"
 
 exit
