@@ -1,4 +1,11 @@
 #! /bin/bash
-#mv -v /home/watchboy/Videos /media/Backup
-apt-cache pkgnames > /home/watchboy/Desktop/packages.list
-tar -cvzWf /media/Backup/laptop-"`date`".tar.gz /home/watchboy --exclude=/home/watchboy/Music --exclude=/home/watchboy/Podcasts --exclude=/home/watchboy/Videos
+# To Do:
+#   Accept arguments for alternate home and target directories
+#   Switch to move Videos directory
+
+homeDir='/home/watchboy/'
+targetDir='/media/Backup/'
+
+apt-cache pkgnames > "$homeDir"Desktop/packages.list
+tar -cvzWf "$targetDir"laptop-"`date`".tar.gz /home/watchboy --exclude="$homeDir"Music --exclude="$homeDir"Podcasts --exclude="$homeDir"Videos
+#mv -v "$homeDir"Videos "$targetDir" 
