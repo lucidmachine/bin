@@ -1,8 +1,10 @@
 #! /bin/bash
 # To Do:
-#   Accept arguments for alternate home and target directories
-#   Argument for alternate config file
-#   Switch to move Videos directory
+#   Switches
+#       --config / -c   - load alt. configFile
+#       --home / -h     - alt. homeDir
+#       --target / -t   - alt. targetDir
+#       --video / -d    - move Videos directory to target
 
 configFile='backup.conf'
 homeDir="`cat $configFile | grep homeDir | sed 's/homeDir=//'`"
