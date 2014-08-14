@@ -5,7 +5,7 @@ require 'ostruct'
 
 # Parse command line options
 options = OpenStruct.new
-options.logfile = "/home/watchboy/speedtest.log"
+options.logfile = "#{Dir.home}/speedtest.log"
 options.quiet = false
 opts = OptionParser.new do |opts|
     opts.on('-l', '--logfile [FILE]', 'Log the output to FILE.') { |l| options.logfile = l }
