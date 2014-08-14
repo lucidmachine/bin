@@ -1,5 +1,8 @@
 #! /bin/bash
 # Wrapper script to shorten speaking time for festival text to speech
+# Depends:
+# - aumix
+# - festival
 
 startVol=`aumix -q | grep vol | sed 's/vol.[0-9]*\,\ //'`
 
