@@ -28,7 +28,7 @@ function getManifestProperty() {
     local property_name="$2"
 
     echo $(
-        grep "$property_name" "${app_manifest_path}" \
+        grep "${property_name}" "${app_manifest_path}" \
         | rev \
         | cut -f 1 \
         | rev \
