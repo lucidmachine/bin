@@ -6,11 +6,13 @@ if [[ $(/usr/bin/id -u) -ne 0 ]]; then
     exit
 fi
 
-ls /boot/ | grep vmlinuz | sed 's@vmlinuz-@linux-image-@g' | grep -v `uname -r` > /tmp/kernelList
-for I in `cat /tmp/kernelList`
-do
-    printf "Uninstalling ${I}...\n\n"
-    apt-get -y purge $I
+ls /boot/ \
+    | grep vmlinuz \
+    | sed 's@vmlinuz-@linux-image-@g' \
+    | grep -v `uname -r` > /tmp/kernelList
+for kernel_version in `cat /tmp/kernelList`; do
+    printf "Uninstalling ${kernel_version}...\n\n"
+    apt-get -y purge $kernel_version
     printf "\n\n"
 done
 rm -f /tmp/kernelList
